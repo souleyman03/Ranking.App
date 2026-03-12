@@ -49,7 +49,7 @@ def process_kaabu(file, subscriptions, date_filter):
 
     ranking_valid = (
         valid
-        .groupby("Nom vendeur")
+        .groupby(["Nom vendeur", "Msisdn Vendeur"])
         .agg(interactions=("Phone","nunique"))
         .reset_index()
         .sort_values(by="interactions", ascending=False)
